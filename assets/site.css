@@ -1,0 +1,120 @@
+/* One stylesheet for every page. Colours follow the Minesweeper palette
+   (DESIGN.md §2 in the app's repo): cool neutrals, one indigo. */
+
+:root {
+  --page: #FBFCFE;
+  --card: #FFFFFF;
+  --well: #E8ECF6;
+  --ink: #1E2338;
+  --ink-2: rgb(30 35 56 / 0.62);
+  --ink-3: rgb(30 35 56 / 0.40);
+  --line: rgb(30 35 56 / 0.10);
+  --brand: #3E4DE0;
+  --brand-deep: #2C39B4;
+  --note: #FFF4E0;
+  --note-ink: #7A4B00;
+  color-scheme: light;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --page: #101218;
+    --card: #1B1F29;
+    --well: #171A22;
+    --ink: #EDEEF5;
+    --ink-2: rgb(237 238 245 / 0.62);
+    --ink-3: rgb(237 238 245 / 0.40);
+    --line: rgb(237 238 245 / 0.10);
+    --brand: #7B87FF;
+    --brand-deep: #2A34A0;
+    --note: #2B2414;
+    --note-ink: #FFC247;
+    color-scheme: dark;
+  }
+}
+
+*, *::before, *::after { box-sizing: border-box; }
+
+html { -webkit-text-size-adjust: 100%; }
+
+body {
+  margin: 0;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  background: var(--page);
+  color: var(--ink);
+  font: 17px/1.55 ui-rounded, -apple-system, BlinkMacSystemFont, "SF Pro Rounded",
+        "Segoe UI", Helvetica, Arial, sans-serif;
+}
+
+a { color: var(--brand); text-decoration-thickness: 1px; text-underline-offset: 2px; }
+a:hover { text-decoration-thickness: 2px; }
+
+.wrap { width: 100%; max-width: 720px; margin: 0 auto; padding: 0 16px; }
+
+header.site {
+  padding: 20px 0;
+  border-bottom: 1px solid var(--line);
+}
+header.site .wrap { display: flex; align-items: baseline; gap: 10px; flex-wrap: wrap; }
+header.site a { color: var(--ink); text-decoration: none; font-weight: 700; font-size: 19px; }
+header.site .sep { color: var(--ink-3); }
+header.site a.sub { font-weight: 600; color: var(--ink-2); }
+
+main { flex: 1; padding: 40px 0 56px; }
+
+h1 { hyphens: auto; overflow-wrap: break-word; font-size: 34px; line-height: 1.15; margin: 0 0 8px; letter-spacing: -0.01em; }
+h2 { font-size: 22px; margin: 40px 0 8px; }
+h3 { font-size: 18px; margin: 28px 0 6px; }
+p, ul, ol { margin: 0 0 14px; }
+li { margin-bottom: 4px; }
+.lede { font-size: 19px; color: var(--ink-2); margin-bottom: 28px; }
+.muted { color: var(--ink-2); }
+.small { font-size: 14px; color: var(--ink-3); }
+
+.card {
+  display: block;
+  background: var(--card);
+  border: 1px solid var(--line);
+  border-radius: 18px;
+  padding: 20px;
+  margin: 0 0 14px;
+  color: inherit;
+  text-decoration: none;
+}
+a.card:hover { border-color: var(--brand); }
+.card h2, .card h3 { margin: 0 0 4px; }
+.card p { margin: 0; color: var(--ink-2); }
+
+.note {
+  background: var(--note);
+  color: var(--note-ink);
+  border-radius: 12px;
+  padding: 12px 16px;
+  margin: 0 0 24px;
+  font-size: 15px;
+}
+
+.button {
+  display: inline-block;
+  background: var(--brand);
+  color: #fff;
+  font-weight: 700;
+  text-decoration: none;
+  padding: 12px 22px;
+  border-radius: 14px;
+  box-shadow: 0 4px 0 var(--brand-deep);
+  margin-bottom: 4px;
+}
+
+address { font-style: normal; }
+
+footer.site {
+  border-top: 1px solid var(--line);
+  padding: 20px 0 28px;
+  font-size: 14px;
+  color: var(--ink-3);
+}
+footer.site .wrap { display: flex; gap: 18px; flex-wrap: wrap; }
+footer.site a { color: var(--ink-2); }
