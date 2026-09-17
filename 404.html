@@ -2,27 +2,147 @@
 <html lang="de">
 <head>
 <meta charset="utf-8">
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<meta name="robots" content="noindex">
-<title>Nicht gefunden · Jassm</title>
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="robots" content="noindex, nofollow">
+<meta name="theme-color" content="#F6F6F3" media="(prefers-color-scheme: light)">
+<meta name="theme-color" content="#0C0D10" media="(prefers-color-scheme: dark)">
+<title>Jassm</title>
 <link rel="icon" href="/assets/mark.svg" type="image/svg+xml">
-<link rel="stylesheet" href="/assets/site.css">
+<link rel="apple-touch-icon" href="/assets/apple-touch-icon.png">
+<style>
+  :root {
+    --bg: #F6F6F3; --surface: #FFFFFF; --ink: #0E0F12;
+    --ink-2: rgb(14 15 18 / 0.62); --line: rgb(14 15 18 / 0.14);
+    --accent: #3B45D9; --error: #C4321F;
+    color-scheme: light;
+  }
+  @media (prefers-color-scheme: dark) {
+    :root {
+      --bg: #0C0D10; --surface: #141519; --ink: #F2F2EF;
+      --ink-2: rgb(242 242 239 / 0.64); --line: rgb(242 242 239 / 0.16);
+      --accent: #7C85FF; --error: #FF7B6B;
+      color-scheme: dark;
+    }
+  }
+  * { box-sizing: border-box; }
+  html, body { margin: 0; min-height: 100%; }
+  body {
+    min-height: 100vh; min-height: 100dvh;
+    display: grid; place-items: center;
+    padding: max(24px, env(safe-area-inset-top)) max(20px, env(safe-area-inset-right))
+             max(24px, env(safe-area-inset-bottom)) max(20px, env(safe-area-inset-left));
+    background: var(--bg); color: var(--ink);
+    font: 17px/1.5 -apple-system, BlinkMacSystemFont, "SF Pro Text", "Segoe UI", system-ui, sans-serif;
+    -webkit-font-smoothing: antialiased;
+  }
+  /* Nothing shows until the script has decided whether a saved key opens the page. */
+  html.checking main { visibility: hidden; }
+  main { width: 100%; max-width: 360px; }
+  .mark { width: 36px; height: 36px; display: block; margin-bottom: 28px; }
+  h1 { font-size: 28px; line-height: 1.15; letter-spacing: -0.03em; font-weight: 600; margin: 0 0 8px; }
+  p { margin: 0 0 28px; color: var(--ink-2); }
+  label { display: block; font-size: 14px; color: var(--ink-2); margin-bottom: 8px; }
+  input {
+    width: 100%; height: 52px; padding: 0 16px;
+    font: inherit; font-size: 17px; color: var(--ink);
+    background: var(--surface); border: 1px solid var(--line); border-radius: 14px;
+    outline: none; -webkit-appearance: none; appearance: none;
+  }
+  input:focus { border-color: var(--accent); box-shadow: 0 0 0 3px color-mix(in srgb, var(--accent) 22%, transparent); }
+  input[aria-invalid="true"] { border-color: var(--error); }
+  button {
+    width: 100%; height: 52px; margin-top: 12px;
+    font: inherit; font-size: 16px; font-weight: 500;
+    color: var(--bg); background: var(--ink);
+    border: 0; border-radius: 999px; cursor: pointer;
+    -webkit-tap-highlight-color: transparent;
+  }
+  button:active { transform: scale(0.98); }
+  button[disabled] { opacity: 0.55; cursor: default; transform: none; }
+  .error { min-height: 22px; margin: 10px 0 0; font-size: 14px; color: var(--error); }
+</style>
 </head>
 <body>
-<header class="site"><div class="wrap">
-  <a class="brand" href="/"><img src="/assets/mark.svg" alt="">Jassm</a>
-</div></header>
+<script>document.documentElement.className = 'checking';</script>
+<main>
+  <img class="mark" src="/assets/mark.svg" alt="">
+  <h1>Noch nicht öffentlich</h1>
+  <p>Diese Seite ist in Vorbereitung und nur mit Passwort zugänglich.</p>
+  <form id="gate" autocomplete="on">
+    <input type="text" name="username" value="jassm.de" autocomplete="username" hidden>
+    <label for="pw">Passwort</label>
+    <input id="pw" name="password" type="password" autocomplete="current-password" required>
+    <button id="go" type="submit">Öffnen</button>
+    <p class="error" id="err" role="alert"></p>
+  </form>
+  <noscript><p>Zum Öffnen wird JavaScript benötigt.</p></noscript>
+</main>
+<script>
+(() => {
+  const P = {"v":"jaN+V8Mw4e9Wgoqv","c":"AB+mcUefEbpY2TFOuhCuRKXsLAaLMvGk\/K77sUsy8GnwIRf5GwycBlhcKw74zNnzQHKDZSVKdEoXtbTmoOoGZ1uzwqfJhTf5lu9tF+LWKCF31QZ9uxACElISVTFddr2JcS3yPWBzJqYL\/v5UKb2F41+ytzT\/J+E8qI+1ZuPJIO2vWvVE1By1lpFivx7s7nQd6qSblRGXb9eTmW+iKLFQss\/8Sn17JiRXnitgVuAW32mlQvP+F8TjLw6dYhAm944E5WQ+o8g0YrK\/ARt4sDNQZV\/9DLjOChMmrybsTEpZif2mJUQt\/zTOpGHFHID3e+BS8Zscp5f9jd3\/bVLVNdRXZTYTlqzWDOIsD2MVoKPM0qDWK+f6y1CVY8sJULrQX2agVLsAtCzXYzXSITnYsgrZAp5DPZFNfvJPaRnPIMDdLhN62OJx85q58cvG3bOloz61Ja7Y5CJ1MPKvrLYy6OQy6jygSDAzUdaH+FneqJoH5KWQc1SLsGYJvrooPlkOvWAt82xK3i9S2xMwQg8YUQG8Ob1FM8Uo3CqMOe+0WThg6PrnPphf3K2jvjmt1oJPm6snNxM2SlxjEA\/PixL0PADROqlV7NG8noJ2SzTxOaxmUXcxzYTnCMOH6xoZPTde73nFzQWQos25f697j+pUquLhHjKhG5e4TfPvWBjsgRk+A+qcYY1yKEvymSaUeFU8GjKml2I+olhJ7Fbbw+qgpOMS0wLHeorvUjhQ5TF9sn1ftV4o0lK2hFotBIe32WJGUUGCpAFeFjEvsqoLa7fTVn9bSQfH7HuC5zDwKmj1jTf2rRYOax4uwHVN6oi\/8s6PaqPayQc1B6TF7b\/dn+zuvPxJM4l1dOfWPRWJORweIt\/SE+JXpQhrRvVA7qFCO4BGRDuHLEyhM+Ah6bJ3V+Df1jd2MPP3R1h\/OpuB+atBfG0AVNet\/4FcRg8SYdyS1gva7+zxfZaV8+mtjEwwz7ei9svLw8RJEikKXmIS0WZ6KBfRvLebVD5azdb2Gbm2gwgxvfNuw7e1\/AGm43EPlfB8QnjRsmMv2Cp+50LI0KnZO50MmM8y2TnXirv8X33VjceeV6oaCcrefksW9Mgakji7gfRZE+KwNdTyAfYXym1nexEZu0A4BaWgRGWD2SGtmnEeu0xtEwIb2Q\/3wrfcM6O3mhx0PkUf4teX8TrAbMhSxjHFU9ETImE6cUemRhnG26+J3hQztqfS4HJjuK6q1OkKcfepdKU8b7EG+VFm5fjhQUI0NoQBTqymgJ73grWCAVUBIHkS7Ccs4LTN+lrmYC\/h1Ik1SL2UfDvJrsMrpNVM6mPMFHvHaoDaWSNer86A5fGP8fBtW9p\/t31A6+ym5UhKJxk1rpSPXP1iKXri3rYqhQ1FmuNv+VyS4Kt6q36eUtqGT5dqcht7L1nnQeyNuK4iIXCQhoVwSFiG3Oo7PQc0M29Wh92d4POGQu814XmKlKc\/Qfwm9ZA6CJIuDu5In6XjJaRzwSRZL8e7vWdSNOFuWo71vcfuuYuJYR8Bf0mOYi3lvSegkRTPYraESIIjwgVTCBSZupIIfJVMeb6Uo563ZqteCXWWUg==","i":600000,"s":"n6RIMfYiQThY\/vg3aWUhsA=="};
+  const KEY = 'jassm.gate.' + P.s;
+  const b64 = s => Uint8Array.from(atob(s), c => c.charCodeAt(0));
+  const toB64 = u => btoa(String.fromCharCode(...u));
+  const store = {
+    get() { try { return sessionStorage.getItem(KEY); } catch { return null; } },
+    set(v) { try { sessionStorage.setItem(KEY, v); } catch {} },
+    drop() { try { sessionStorage.removeItem(KEY); } catch {} }
+  };
 
-<main><div class="wrap prose">
-  <h1>Seite nicht gefunden</h1>
-  <p class="lede">Diese Adresse gibt es nicht. <span lang="en">This page does not exist.</span></p>
-  <a class="button" href="/">Zur Startseite</a>
-</div></main>
+  async function derive(password) {
+    const base = await crypto.subtle.importKey('raw', new TextEncoder().encode(password), 'PBKDF2', false, ['deriveBits']);
+    const bits = await crypto.subtle.deriveBits(
+      { name: 'PBKDF2', salt: b64(P.s), iterations: P.i, hash: 'SHA-256' }, base, 256);
+    return new Uint8Array(bits);
+  }
 
-<footer class="site"><div class="wrap">
-  <span class="copy"><img src="/assets/mark.svg" alt="">© 2026 Jassm</span>
-  <a href="/impressum/">Impressum</a>
-  <a href="/datenschutz/">Datenschutz</a>
-</div></footer>
+  async function reveal(raw, opened) {
+    const key = await crypto.subtle.importKey('raw', raw, 'AES-GCM', false, ['decrypt']);
+    const plain = await crypto.subtle.decrypt({ name: 'AES-GCM', iv: b64(P.v) }, key, b64(P.c));
+    const html = new TextDecoder().decode(plain);
+    if (opened) opened();
+    // Swap the whole document for the decrypted one. Not document.write:
+    // called while this page is still loading, that appends instead.
+    const page = new DOMParser().parseFromString(html, 'text/html');
+    document.replaceChild(document.adoptNode(page.documentElement), document.documentElement);
+    const hash = location.hash;
+    if (hash) requestAnimationFrame(() => {
+      const el = document.getElementById(decodeURIComponent(hash.slice(1)));
+      if (el) el.scrollIntoView();
+    });
+  }
+
+  const show = () => document.documentElement.className = '';
+  const form = document.getElementById('gate');
+  const input = document.getElementById('pw');
+  const button = document.getElementById('go');
+  const err = document.getElementById('err');
+
+  const saved = store.get();
+  if (saved) {
+    reveal(b64(saved)).catch(() => { store.drop(); show(); });
+  } else {
+    show();
+  }
+
+  form.addEventListener('submit', async e => {
+    e.preventDefault();
+    err.textContent = '';
+    input.removeAttribute('aria-invalid');
+    button.disabled = true;
+    button.textContent = 'Wird geöffnet …';
+    try {
+      const raw = await derive(input.value);
+      await reveal(raw, () => store.set(toB64(raw)));
+    } catch {
+      button.disabled = false;
+      button.textContent = 'Öffnen';
+      input.setAttribute('aria-invalid', 'true');
+      err.textContent = 'Das Passwort stimmt nicht.';
+      input.select();
+    }
+  });
+})();
+</script>
 </body>
 </html>

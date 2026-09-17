@@ -2,144 +2,147 @@
 <html lang="de">
 <head>
 <meta charset="utf-8">
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<meta name="robots" content="noindex">
-<title>Jassm — Softwarestudio</title>
-<meta name="description" content="Jassm entwickelt Apps und Software, bei denen die Gestaltung das Produkt ist.">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="robots" content="noindex, nofollow">
+<meta name="theme-color" content="#F6F6F3" media="(prefers-color-scheme: light)">
+<meta name="theme-color" content="#0C0D10" media="(prefers-color-scheme: dark)">
+<title>Jassm</title>
 <link rel="icon" href="/assets/mark.svg" type="image/svg+xml">
-<link rel="stylesheet" href="/assets/site.css">
+<link rel="apple-touch-icon" href="/assets/apple-touch-icon.png">
+<style>
+  :root {
+    --bg: #F6F6F3; --surface: #FFFFFF; --ink: #0E0F12;
+    --ink-2: rgb(14 15 18 / 0.62); --line: rgb(14 15 18 / 0.14);
+    --accent: #3B45D9; --error: #C4321F;
+    color-scheme: light;
+  }
+  @media (prefers-color-scheme: dark) {
+    :root {
+      --bg: #0C0D10; --surface: #141519; --ink: #F2F2EF;
+      --ink-2: rgb(242 242 239 / 0.64); --line: rgb(242 242 239 / 0.16);
+      --accent: #7C85FF; --error: #FF7B6B;
+      color-scheme: dark;
+    }
+  }
+  * { box-sizing: border-box; }
+  html, body { margin: 0; min-height: 100%; }
+  body {
+    min-height: 100vh; min-height: 100dvh;
+    display: grid; place-items: center;
+    padding: max(24px, env(safe-area-inset-top)) max(20px, env(safe-area-inset-right))
+             max(24px, env(safe-area-inset-bottom)) max(20px, env(safe-area-inset-left));
+    background: var(--bg); color: var(--ink);
+    font: 17px/1.5 -apple-system, BlinkMacSystemFont, "SF Pro Text", "Segoe UI", system-ui, sans-serif;
+    -webkit-font-smoothing: antialiased;
+  }
+  /* Nothing shows until the script has decided whether a saved key opens the page. */
+  html.checking main { visibility: hidden; }
+  main { width: 100%; max-width: 360px; }
+  .mark { width: 36px; height: 36px; display: block; margin-bottom: 28px; }
+  h1 { font-size: 28px; line-height: 1.15; letter-spacing: -0.03em; font-weight: 600; margin: 0 0 8px; }
+  p { margin: 0 0 28px; color: var(--ink-2); }
+  label { display: block; font-size: 14px; color: var(--ink-2); margin-bottom: 8px; }
+  input {
+    width: 100%; height: 52px; padding: 0 16px;
+    font: inherit; font-size: 17px; color: var(--ink);
+    background: var(--surface); border: 1px solid var(--line); border-radius: 14px;
+    outline: none; -webkit-appearance: none; appearance: none;
+  }
+  input:focus { border-color: var(--accent); box-shadow: 0 0 0 3px color-mix(in srgb, var(--accent) 22%, transparent); }
+  input[aria-invalid="true"] { border-color: var(--error); }
+  button {
+    width: 100%; height: 52px; margin-top: 12px;
+    font: inherit; font-size: 16px; font-weight: 500;
+    color: var(--bg); background: var(--ink);
+    border: 0; border-radius: 999px; cursor: pointer;
+    -webkit-tap-highlight-color: transparent;
+  }
+  button:active { transform: scale(0.98); }
+  button[disabled] { opacity: 0.55; cursor: default; transform: none; }
+  .error { min-height: 22px; margin: 10px 0 0; font-size: 14px; color: var(--error); }
+</style>
 </head>
 <body>
-<header class="site"><div class="wrap">
-  <a class="brand" href="/"><img src="/assets/mark.svg" alt="">Jassm</a>
-  <nav aria-label="Hauptnavigation">
-    <a href="#arbeit">Arbeit</a>
-    <a href="#prinzipien" class="optional">Prinzipien</a>
-    <a href="#studio">Studio</a>
-  </nav>
-</div></header>
-
+<script>document.documentElement.className = 'checking';</script>
 <main>
-  <section class="hero"><div class="wrap">
-    <div>
-      <p class="eyebrow">Softwarestudio · Deutschland</p>
-      <h1 class="display">Software, die sich <span class="soft">richtig</span> anfühlt.</h1>
-      <p class="lead">Jassm entwickelt Apps und Software, bei denen die Gestaltung
-      nicht der letzte Schliff ist, sondern das Produkt.</p>
-      <div class="actions">
-        <a class="btn primary" href="#arbeit">Unsere Arbeit</a>
-        <a class="btn" href="#prinzipien">Wie wir arbeiten</a>
-      </div>
-    </div>
-    <svg class="hero-art" viewBox="0 0 272 272" role="img" aria-label="Ein Raster aus Feldern, einige aufgedeckt">
-      <rect class="t" x="0.5" y="0.5" width="47" height="47" rx="9"/>
-      <rect class="t" x="56.5" y="0.5" width="47" height="47" rx="9"/>
-      <rect class="s" x="112.5" y="0.5" width="47" height="47" rx="9"/>
-      <rect class="t" x="168.5" y="0.5" width="47" height="47" rx="9"/>
-      <rect class="t" x="224.5" y="0.5" width="47" height="47" rx="9"/>
-      <rect class="t" x="0.5" y="56.5" width="47" height="47" rx="9"/>
-      <rect class="f" x="56.5" y="56.5" width="47" height="47" rx="9"/>
-      <rect class="s" x="112.5" y="56.5" width="47" height="47" rx="9"/>
-      <rect class="s" x="168.5" y="56.5" width="47" height="47" rx="9"/>
-      <rect class="t" x="224.5" y="56.5" width="47" height="47" rx="9"/>
-      <rect class="s" x="0.5" y="112.5" width="47" height="47" rx="9"/>
-      <rect class="s" x="56.5" y="112.5" width="47" height="47" rx="9"/>
-      <rect class="a" x="112.5" y="112.5" width="47" height="47" rx="9"/>
-      <rect class="f" x="168.5" y="112.5" width="47" height="47" rx="9"/>
-      <rect class="t" x="224.5" y="112.5" width="47" height="47" rx="9"/>
-      <rect class="t" x="0.5" y="168.5" width="47" height="47" rx="9"/>
-      <rect class="s" x="56.5" y="168.5" width="47" height="47" rx="9"/>
-      <rect class="f" x="112.5" y="168.5" width="47" height="47" rx="9"/>
-      <rect class="t" x="168.5" y="168.5" width="47" height="47" rx="9"/>
-      <rect class="t" x="224.5" y="168.5" width="47" height="47" rx="9"/>
-      <rect class="t" x="0.5" y="224.5" width="47" height="47" rx="9"/>
-      <rect class="t" x="56.5" y="224.5" width="47" height="47" rx="9"/>
-      <rect class="t" x="112.5" y="224.5" width="47" height="47" rx="9"/>
-      <rect class="t" x="168.5" y="224.5" width="47" height="47" rx="9"/>
-      <rect class="s" x="224.5" y="224.5" width="47" height="47" rx="9"/>
-    </svg>
-  </div></section>
-
-  <section class="section" id="arbeit"><div class="wrap">
-    <div class="section-label"><b>01</b>Arbeit</div>
-    <div>
-      <h2>Produkte, gebaut für die Plattform, auf der sie laufen.</h2>
-      <p class="intro">Unsere Produkte erscheinen unter eigenen Marken. Die erste ist
-      Balcony, unser Label für Spiele.</p>
-
-      <div class="panel">
-        <div class="panel-head">
-          <h3>Balcony</h3>
-          <p>Spiele für iPhone</p>
-        </div>
-        <a class="row" href="/balcony/minesweeper/">
-          <img src="/assets/minesweeper.png" alt="">
-          <div>
-            <strong>Minesweeper</strong>
-            <span class="meta">Der Klassiker, neu gebaut. Levels, ein tägliches Rätsel, Serien.</span>
-          </div>
-          <span class="pill">In Entwicklung</span>
-        </a>
-        <div class="row muted" aria-hidden="true">
-          <div class="slot"></div>
-          <div>
-            <strong>Weitere Titel</strong>
-            <span class="meta">In Planung.</span>
-          </div>
-        </div>
-      </div>
-    </div>
-  </div></section>
-
-  <section class="section" id="prinzipien"><div class="wrap">
-    <div class="section-label"><b>02</b>Prinzipien</div>
-    <div>
-      <h2>Wenige Regeln, konsequent eingehalten.</h2>
-      <p class="intro">Sie entscheiden, was wir bauen und was wir weglassen.</p>
-      <div class="grid3">
-        <div>
-          <p class="num">/01</p>
-          <h3>Gestaltung ist das Produkt</h3>
-          <p>Wie sich etwas anfühlt, entscheidet, ob man es gern benutzt.
-          Deshalb fangen wir damit an und hören nicht damit auf.</p>
-        </div>
-        <div>
-          <p class="num">/02</p>
-          <h3>Nativ statt generisch</h3>
-          <p>Wir bauen mit den Werkzeugen der Plattform. Das Ergebnis ist
-          schneller, sparsamer und fühlt sich zu Hause an.</p>
-        </div>
-        <div>
-          <p class="num">/03</p>
-          <h3>Datenschutz als Standard</h3>
-          <p>Kein Konto, wo keines nötig ist. Daten bleiben auf dem Gerät,
-          wo immer es geht. Diese Website setzt weder Cookies noch Tracking ein.</p>
-        </div>
-      </div>
-    </div>
-  </div></section>
-
-  <section class="section" id="studio"><div class="wrap">
-    <div class="section-label"><b>03</b>Studio</div>
-    <div>
-      <h2>Unabhängig, klein und auf Qualität ausgerichtet.</h2>
-      <p class="intro">Jassm ist ein unabhängiges Softwarestudio aus Deutschland.
-      Wir beginnen mit Apps für iPhone und erweitern das Angebot Schritt für
-      Schritt um weitere Software.</p>
-      <dl class="facts">
-        <div><dt>Sitz</dt><dd>Deutschland</dd></div>
-        <div><dt>Plattform</dt><dd>iOS</dd></div>
-        <div><dt>Marken</dt><dd>Balcony</dd></div>
-      </dl>
-    </div>
-  </div></section>
+  <img class="mark" src="/assets/mark.svg" alt="">
+  <h1>Noch nicht öffentlich</h1>
+  <p>Diese Seite ist in Vorbereitung und nur mit Passwort zugänglich.</p>
+  <form id="gate" autocomplete="on">
+    <input type="text" name="username" value="jassm.de" autocomplete="username" hidden>
+    <label for="pw">Passwort</label>
+    <input id="pw" name="password" type="password" autocomplete="current-password" required>
+    <button id="go" type="submit">Öffnen</button>
+    <p class="error" id="err" role="alert"></p>
+  </form>
+  <noscript><p>Zum Öffnen wird JavaScript benötigt.</p></noscript>
 </main>
+<script>
+(() => {
+  const P = {"v":"P9rg2SMMILrXbKTr","c":"Pi5Ey+kBz9\/xsCJ1J1eGEwCMMUZ3vWlWrA\/hToSvsha\/jQOpyhXF7srPsdz6cyHMzPjXnlAnohzjNtJQhz9lMvxp6U3g5\/S3CuOSdAIvD\/RSGMkWcoCsxHM7xWunClS7ux3jnr\/mhgiAOOUWI8NidQkJS4m6+L\/1fdZVq8KBeTjXWo9Yiiv2K3ai5y+Zn\/0cbZCg6MkjhljTDYcS+WhKLL2reB1w6uttP240NjaTxPqY0P2asiKnbFRX\/THQinDuGmFBD1ZjdCOc4nn8sJYyTYEHEIvcokzxMKTkUKgWZf0tlWwj6x1o4b4vHWD+3vig7eqVstZ1NU8FL\/K6MsvXUJLRTl98Mg3g5QkgV7uowH\/X7I9n4uBDh04f3VdFBmAhbaUOAFohJCV2rmgtLscUJkGehj6r+VYTLGOot2VRb6GiSanjkzsU4Ur8vtySXum6D6R0finY7ZYwHO4BOGQu+NrT0vdTwDd64XvNucqavfTgwG1kjcT4sZ30RE\/0RPKee2bW9PVwazdPXLhFA77HfCDEGLeW7lkTpZvK5dVZPslVLlVqZBJfbudiu6L7jQyxx22Qn0EBQTGAomvbaSuX+NdWXiPN3JSc4GuGEiDF8Pej0fI16XAqhtqQ2geSy0V2QiHNgh4UPT48vqTTRxBEa9YGNl7vCOiRd\/Wx\/I00s0k2fewu\/ZUHzcyv\/\/2M1M\/2kjGnStFcjIYtNf7w5XF5Nh1tRSlgPewRXiVWVWWc2XOAsZP33faBvp3NXXxw9T0i9yKJrCx17AappXW9kJapQvEQ6STRdMzbbl7g9dYa6KRH2IGKT6HzvIKL8JAkT\/PnpF\/8uft97s6\/j\/Vo+SIB88ZJE7WlVw6\/H3FvW6NaJC9KWIPvAMsi18cmbCDKjiVS3xxRMX9gloxh5tE+hxeJSxEW3tmgVsWOnj3xaP0IiKGYXpQ3yuRMKnr4MAs29YEuzHezU6SeqOgWyIIS5SrL9JPTilWEH2vADE5zlTS+tzsE4lAQLZtZOf6o2GkKoCIl95AVTXBP67y\/32a2bhZJR5lUpSS3HD\/E+lXmUswJ7xFQZk5njwcIBLRd\/j+66dkU\/\/go4kthogP82SeYIA2OHwSjE\/3RshherQWL+yNLX2lDrkUDCk2\/g+2mJuMlnv9h1uyVxqIBmgdQWIER30GyPSSSKlllcoFiJadb5VWG2KeAxZ7X7E40rsTAsZmHNZJGaUfRq6oZ\/I4xk4J4mnAm2TqlRplxNJP2U\/OVsx9Bwj1Bg4kgBrN4C3ixt6spzoKLcTW9\/kLXZWUGxLuLsUz6R4S7\/30OeB7HPqwsHsFdwETJmRyY0nhp4UKfRP7rv37JZZ+XLCMu5XpJ7X+udHKrE9gAoG47Aqqm9qDxpH6POMNpuVyZAlbAXpyQXzrGCNVfdgk4cuqNJwkW1lb4ICHStbsVPNX2Qkb6gMmU74oNfDSZzG20+pwTx74UUZ1Q6Ku6CMR15XT+qJ47UXSM9WusF0rcUxIMrK6YE8lU7blrm+46kM\/SECANIGnK6iCB4THjkhHOSL0DvPNdind5NWp99uixMZoIwJJGYc9N4Fi9FoUql++I1ySQGx383Ksk\/PD7DBSxUfF4Sh22ZAyFZsVJldM+OCptBRyIzlWvyHb4z7AhswghlzD2+r\/xVn9HpaZ92XdoQ0BxfqfrnJ5tI6TrHONZ+mgYvwe2P8LLMcPdfhaHWSKnNaKCOM\/LdpiclMPEjf\/IHHvV0VrUJ3tXIEJQfTHBJi9L0WbkQp3YxGAUSuuafSM+HQG7BX0SLf43TFDTPe4xpDuuu9IB5vpyOIG4CWhP9+ZEOGFcVrZf\/w607oSG\/0lUWkmkV8zqtjnIxKVVFIMXOavfhbbvJH8qxtn1wrDb4q90AO7c5FGKDmiQNRTSVfsPa5wOgGIjUOIl7emrOFqiLteGZhJ4ozzi6IEpA4IcWb18K1x0t8y+s8BtkmT5DXiFbQX\/Bk6eiyE4cb1tGf3Le4DPP4hZENY98CLM1FBhYXufShKc1edvaHlaC\/0cG6NAfhNrh8xENfRxZ4dPEW5QSDMxOGyThh5c6f4n1nFiDoz7NWYdtUNbHXgmVjabsL8RofFq6Gugbgr8b8kn5arrz+A5e0K5J2wNCcSYONoNCppn9viXDCS0hJIVeUzTg+X2c3KpNu7puQ9gp4MH59C0puWBlrFA2WNc69w7njfFbjNPEP6Jfwh+jKz8b3artvSBaFfQ7hz+F+Z+uykm3KCBHCtSHfIwe6vObGKk41dS7Y5yVa28+ryYhHvtGUxM8MRer3eXQvaG+QcNom3n4+tXdp4wQWcAyXIJiRoOXJwwKFiBdPlKDKWCQWlrtwElJNlE0suiF0AaImb+fwJZKykEhBT1mrMPJi6zB9Ip8ca0GFNOxRGsuiFqrkGuqBtxF+DcaL2oL\/UftspUM8VvV+NHfXFlLy859NJZ2KZot5cGzc8UX0Ye6AQsdcBQWsSIr9\/z4s9+BSDlnPDWv1\/mbaqLM1ZxJyPnLAMkOBBJzU+d9CecERk0u5OoUoRfNTAPXYLJRs6atyfMIc6Uc4dPHeECRdj+\/laFFP0LWRMHqkzlj+YjwgVkqLEY1sgP+0yWmC1efwa+ZWowM08cHfS+cHPi2BEtz+ppzysM6zRBj9bI4f0phweHV3BVRir7qL5kkDGG83n\/n262t7rLt4AaQ5TIXUWFTgnHS\/Y4gRmrC2kF78in7ZD1ZPJ1IooAi8bRsmPK9qOsGS6VYq3qE7VFr0PTmlv7yp0wUv+F2\/7iVvClOCcCXdbS8FEmaPSb0oCH8GwIh\/KyrvZ72KhEvn7OHFb7pMWqS8XYojK3b26l\/cBb2klFrV0eBzxPsJvqo7uoIF9yiURn3k+KeWXxkrAwJWwmxnpyutLua6pFdXprz3pEvC81nAFRpKLJgN3mOvVtqWz+FutlTwBi+NcBG6z7\/rAWgmk7zsQwzibD3emg0rvERpVmBRW0RxH0hEn+V1oOLpW0cX1GhatEQ5DUvvRcqyG3NQ5dAml7GkiEi6V7\/VLCw+h5eP\/oCVA3eU+OxkBiP3s5AoeZcIplCatpEGgR2\/TZTSjwyAZW282AEZx6sVw1gx4KkA+V0itE9SGo\/QJblzFfgYNUYGeWPmC3mcXXWcVaIKj101qmY7IZ3xRiuqMLIisTASPy8eLd8NKpaSijyeZFCrTqmktn9+kyr\/UayW91FFgJSy72ekTQH1ekoiQ\/qYfH\/IlZOwCA4pn\/hDsSbzd\/3hIFEgj3tYrYK0SB705cc14YIVOLhJfncZ09swrD+dIdFZgwq1oJBbgqimqt5uq8CzHR7NFSxGWSyReXD4qJMmKNTozj3j+fJ\/dxpAYvH96nn4xPnMmG6k7aJ4S91zgwYfvqXP\/lQDnjiSPOQkNVunZR47KfUmCMQdO9HLGGeExPmBTGkQ2qRJo1APJ\/DjgBs9SWAW1Y4VQ7G08LkJxLiP50zBiqaekJcULf5VBk0rBH4HEBD1f9nuO1WGa\/n37TX1GKN5bkXlWM0pCp6xAIncnEVrSu3nVq3XjuZPK+HnzWwHR8HkhyTs4urdgzbZ6y4zZt5PY7B6FUvwK4bUkVDG6iBA2j6UJt8ZttV+hfDzNgzdyH34+uwIP5lOgFfw9FvpiJd5nXIWHOGo1e96B9G481KBWpfH5jKUkeFAkHTVo5zOKvaJlvT5FbmsTlHOzlkoMH60pW9t1xkBnOsUn5GlzyeuGYAp9aAEzvoBECt6RXtALdSmIU1Fr4hXO6\/5nQ9GwvSHBI+zheqUeu1YN\/\/wtmilitXOfgHwLdsGCNDjeqPA4mYbIYX08gW4xYs2KICnEor2rorcVzWwTwXtGG8iiHLbpSS\/yY2PK+XD51+HoUv\/iFY0TJmNbjwfwGPozwVgCgJau33\/OR8L1sSQmFP33GtWRwy8ICIV6TN8pDO4zEJNHBs+S2ZW6tHtTFCXuo7jpQ+o26M8HQSPRmpA6Tw\/gqAZF8KLTneIFYu\/AkyaKu0jijSf3bp5tUk0FnSBkBD7BWoA7bB4c9UdouovtAZLUY4tsAe8Oc9N\/pxzthoZHrcHG\/zJBqizulu8SWsaTPBK3ORi2oCXzWeLG10DirVz1vBwTMEfer+C1RqdV8th+xzVM9jKaLClfT8F0K+2ATG\/joxDKVKAA6M4xnAp7619x4ZVIhmla0ISx7ITvKlx6hArrsBpEAjvXqgbcvtagKqHNJjS52DWNJzzd1GYNlhQ8fWR7rHmnR4oBbVuNRoCUkqS8ECjQDFzYMWbdOmq2uvY0ApB+A\/v1K2odUjcOQOCTs+L8wIKABveFO5no4dlUT8yfyoPcoUut3bR0lDjo+YdNSarmlyyL6BPgmi4apKKSmKghJIW7CP4MOHHitchKoGKQv0Qyn\/QhBxvOScrVmFD352qtiLbQMKLraC0DKggik6adYzq7t497tdidDlazg7FLj+6G0ijCfVi0mJnrjlEXyR6IahuxPRZfO0QFpYrlRqKaGjNIxM1k17gdAZ8tPH2G0Q71mu+ivYD4P3s5N6GCeqU6u6VEsVMndxWa9lxhOmV19FwhmuGGPYxPrW1PVlktPxH1XuSZ9XKTpEFkWtCtmU92kJz2ImaJRoEK\/dnqKaJ+e7dwbeoyPB0zTuLeN0QZn1YSt20QXPB28RPyco5bdLTv1LWPh5S9MP8WIGEDXz3t8VLLUQ91q4R7FHyDZXZ+7vsBTe0kjuKVRmgunGq5QpsvkmnGVNzR6d1Qc+jE1kn2r1SrpAhF6IRZ4\/+YCtVAQuWViEhOogPTi3Gsfe51qDG5hxv7ZryfBRQT5lAGrUerprCuQbhSLXWqyMmGaNXh9Y3KDQpe2dFMXyA8NK99UV0mwBZxE4SGZndLdR8CPs0HbXPT9iT3H4zFxG\/EgsHh3u8RsRRK9yduRCiYaPl25zaevGwmrgzhsoJk7uhxVbowtGxeYjvs5kDl0GWoFZAfhWgVG5t8WhCDH1MWFxUqVvyO5fMHaUxy0kW\/IP+PK8FrDIB8WIZ6AkN\/2EjTiEtSXlqUN7COgqwMReuL8GQV7LMPqZPNW0rcTtDjMLj0R08ph9UZX87LTXWY3JoZ+uxwqMHJ8egukYWR4kcDzW3VVkRyT9xTCWsJj4NTe4G7H0aUOZrQHLriS0zdmmsa1gP812yEDsvTv3UlhDl3kHrR9WWTfSUizbTG5890RTPLftv1HyVaGWhvhXmy4+JAqnJaPBjqk+k4v6MFlNF+tRQ16QamB\/quHCmQytBlL\/yZXSFuxEvCkt7GyxOi0lP7\/DLKXvQbYj+baCTrIGO7TuKDapiep\/vWJN4jccO\/E1KI6zifUWukRU3c+sDLdkpgxRW+WNFFUGRvgk\/z33J6ThrrhpPObXwCsLaZcTxLZzgkAymKSZp26jYKZJ1FyjzflBvPvJR\/ILynt93L4ZpXtOOs6bHWse3nAj9RcprVbCUsIwOc6DI502lYGpL40MJcm0MV+LRDxZd6O7JdiYuu6wVioLOqIodNpQWxinhCAutU3NRLBSAb7gU2fNyb+u2FC4XawQ1sg9oim3HduTQrSrhwXw\/I8F6iyWiRW\/vV0vDBj7BFq6JG1K\/jPhuyi+FF2p\/OiaV6ShM8pvD6v3cOxPOPoZAA7YDMJ55ePrDAb3nPq+8EDOAcoTkTHGuiBOA88UIXB9ui\/Fbp5MKDsmC76oo7h6nkXyMV1rjFVJ9+a6XYxwXLKhW6goM3SZ1o1HzdQcyejJn6yuCYmdfY4KtGCG7Fk\/gGQOBWfug1DiVE+AMBo4lcsnOHirzGGsSNXkLron5rNowj6l4Ysk6dyWUPTtEItObClaIBLwSIAe\/C62BDR+1OUQ4USrcGKlbhXthqgwmVbP8XfG4EG3SqQj6RU+L3ooBIH\/BrBDl6JlP6LKa5v6ii9YT4Zwq\/v4h9MACDkf2in92pgLuMeNstEE5122JxrjyUNuICg5KonrDGM7XgTsLlflO5YmSboy19iqIqftkjazj3M2C2xogeIJYIGYGLD19zhOOyk\/ejgM5F1quvqtyaNXV7b6RuRgdevKOKRPfp+5m6cdVR6e6epK1BYEY5ERJUxh0TGDTIAIhEVrd0v7MXvFxkT0PoTOYll7v\/S42o6jZCJKWN9iK5jJLz0JP7iGsO5ZT7Ik\/FCAC2RvJ1VoO8ul8eGO6HGxnk03YpAT+4s4zrmeSAoFEEEk+xBa1Yz80O8C3QUNIPSA4ISHU63AlF0QoyQ9WVymwNuliZFDLof1g2iJzroz5R3GSCnBMPS3nm\/XsXcmZmXhem+eMu3ucw+doP16Jc2aXjbeehJueG88OPHOSIepHNNw9TI2hkfMwDVGGQ8RkLkVR\/LNmx8+YclBlF5tNCMkRDOaqd1Dkf6LK2jbUIgeDvOBPWtRh445IrKivbLNFrOgVpbPIVO6s1BPEjgb8iaffEJ4zdG6Z0BIlKFOqom2\/7mPzTzZLwEO2YDVKzfZvThzb7IWZ536JVJl7a9xRndK1woGIBEEMmAzzFDe9IcWlValBfv3U0d2dkIJPde2eyE3v7nwCp5WeehQkfqXfVyGQHcnIxnqsssoAveaq+cGneSX+iepbLeQijZ4Y+orgRWGmHUi4LNWkj9Sf5OnGbhnxN8sKwkZPzd2mfA3Key7iLecVtBq94OIQgwGMGUuVyQ83qZV5+SM\/QK1QIpuMw+DbDQarq5aRycDsi130vVhp4JXFOO9M6sQLpWVUMRPrVv+Z8yjPJnP8YQSX7dqHD75xQrH\/JUXlaz8YbO9ZiV4zwLkvuWMpukytZh228ZQDpvq8yYgZMaT7Hf0y+5lVqTs4I8ZMmiuS6Y5HyHUTzFviY0LLEnCW\/41IYa37l5GRahjICPxicun1bTL9js9chg3A32fkTIV5D0xWEwjk4nUqy52y9lgk61sE7rvMztEBG4IazQ2srRDwdAiJXcFpC8oQ+9eJ\/ESMC8Qoqk7B8TkAr0jl0j0HYCL2C6yEV0oxlLEX45aHlGOokRIH5qBTbw8Q5xvIzX\/thu9VhkEUJYuN1QEgM4OY2fI+CdaY4m0oRDJh\/Qvd+dHkXqWPQE7MObGJAgrlOX5eY7tfkCjF4C4DBqhQe5zvh4xAL+MfpMgfExDUqQHDUmPviRHSJT8+HlcZsQV45zLym1krs7fHl7b9PbxtnQWVW+EElIDcmDqECwr\/K5oHLI136MHlUkUglTtl87+iqVONM5XFKxiRtHI0uDmlE93MYfBfDgUYb4H4hDhgiHa3QojZGyd8JBSoUAGTs8Sklz08bUihl23S8PbMJZPmzQpJGs7nfoUkIVDpk\/b0J5KUexSwoXqgq4kKQ2OBCmNpJ9robGUuoxBdTmbuyteWxp6K07j2GlGdnnLgyvHjsyKFab4SA3TmmwY0uXEF96k1N0q7IsoUq0N9COvFEblB6LQDKgh09vG6SUH6nhGDEgnoK5e3cZ3sWbJ1dRiB9\/KRuJ03kp51o7ysydk0Lge+qh\/blzTL9wMHON\/YxyxeRc+CosWV7ff0jjSa1qMmEUMJtZVOMDiy5zXmyBxC7W3JbDJ0SrgAxfCOgWCUQN13pbR64On28OYB278HeiWz39O3eyd1dNTHXqASJLuipXdf6Bt\/mmc1nuvptdsiWO9m0UuX1BcVMi8s3szExxTwujho2C0VVoPFYGyZLFTVa7a5AW7hTtpOxzs2jaXyj3kj9+44Hw6K88ONDa0y+u5G6GTaiwFbzpWXgtVY4dozbXHWAjcyN2rXNRmtfPAa0GbwtJb6bTKPA59hGu3n1Vid32EmZd+s0ASirx95maMdoJM5pZ7K52uTB7xFFohyPSQjia+g3tIQ1JcN\/eYIFcZ54ohgAZLTjVJsa5XqKOXPQ2gBs9j2X8GYs0V\/MJ9ZQIECccVz9Z\/3f7BVjaor6Vmj9G9pgcMTCTZfYmvB7xX759xYq1WAhidacjgQBCrOdqDHeD\/68tHmrFTeEb+3sWtAXiaEwYPl\/KtFeTzQ02tSchV43bcoxlo406FSgjp83utwJlSYDF60Ky2MTKta4Et\/h3I023GJHj1pHNVcbaHEeenImt3BU3j11ADIVBGRgOVLgo5XvzIoi0mBMv4mj71oROyKdVZQus62DVJFjdxVFe8VirHEwcDDoP1hQSmphukkVuvKXmZ\/uLmq11koWKnQPMHUuo91WrtTo63OrI5XloKRyofV+5ao1toL0qj\/RgNOvWdBmuO9cVShqHVAF3RZwVr1iu272wkHeVxAZdUZSDGLmjCWvjb7HrYumH\/lt8I4Ybyjd\/B12q9EuadAo3saVVSslr2SuQ\/wRx4KzH6AVV1gh8EtPbBRC9e1WpqAVYQqLqjSwrdDeU3+ufvPt2cO3Gufjfe65iu23Nm3xj6YJ6vGNrpKMJTXQ6bEKALPY2awVU+FVOYwUQYhh1CeG\/ncPl\/lFW9cxfI3l9Az80HYMzbf3oJX\/wAFGnyzR2n6Vl+xnX7x748B+4ng5gWrfanwmrpsNM\/HDGaMTbEqwoGhq55suIpHHRlsUir2tAQ1oq5bBRGLxpm\/j46l+ua6clCoDnIfSPE4Ps9KmvLSRPZp2yM4HCxMhSbaLy4FlwZQ67rrz5ZJIIt8abb4sChikEoXD2vUgoU9LNw1VWzeJOxAFHGsJwalUC6CdLtaABKW7ciQcA0Qg776iK6Y6gIdJ7une7TYfr7vtKBMmf54xJAmdQ2Zrxr\/C7iaEAiO6qrAUgQmaSDUheGOcW57Pp6xpQTIKvTccMkxYp3D4jirJP9yIDKIhSuOdJNVSCZTEfoOmimqfkDwLx40pnMp0kDG+EHOiC4r0Kt1Rw2XbpOs+Z\/u+tizGCLW+RfmVrXipvxXizXHx3Vigt4A\/1NnnnVQFBzrA7UwfKJBu4QM60lNGopEFAlttYlH7JGpp\/QZgSnRXo8ysc1FcTj9fyi+vOlh7GxrdjllhfgzsbgHFVhrSt6jQQVPB5o6QvIEy2o62KJnPzlnsS5nA47284A9eFMxhbfj49VkzH+9c3aEVWDKcCvxm1BqHK9keLrDbEVQvi2XMR+NSXQ\/VrtLUD\/TO22L7Kffy7wT+ebMrCh4TjJtLWjpXAIe55\/EW8rPk27uv6Vihi+YggjwlSs3Dg2BtGF0oWcMHYnmnoVfL+stX8","i":600000,"s":"n6RIMfYiQThY\/vg3aWUhsA=="};
+  const KEY = 'jassm.gate.' + P.s;
+  const b64 = s => Uint8Array.from(atob(s), c => c.charCodeAt(0));
+  const toB64 = u => btoa(String.fromCharCode(...u));
+  const store = {
+    get() { try { return sessionStorage.getItem(KEY); } catch { return null; } },
+    set(v) { try { sessionStorage.setItem(KEY, v); } catch {} },
+    drop() { try { sessionStorage.removeItem(KEY); } catch {} }
+  };
 
-<footer class="site"><div class="wrap">
-  <span class="copy"><img src="/assets/mark.svg" alt="">© 2026 Jassm</span>
-  <a href="/balcony/">Balcony</a>
-  <a href="/impressum/">Impressum</a>
-  <a href="/datenschutz/">Datenschutz</a>
-</div></footer>
+  async function derive(password) {
+    const base = await crypto.subtle.importKey('raw', new TextEncoder().encode(password), 'PBKDF2', false, ['deriveBits']);
+    const bits = await crypto.subtle.deriveBits(
+      { name: 'PBKDF2', salt: b64(P.s), iterations: P.i, hash: 'SHA-256' }, base, 256);
+    return new Uint8Array(bits);
+  }
+
+  async function reveal(raw, opened) {
+    const key = await crypto.subtle.importKey('raw', raw, 'AES-GCM', false, ['decrypt']);
+    const plain = await crypto.subtle.decrypt({ name: 'AES-GCM', iv: b64(P.v) }, key, b64(P.c));
+    const html = new TextDecoder().decode(plain);
+    if (opened) opened();
+    // Swap the whole document for the decrypted one. Not document.write:
+    // called while this page is still loading, that appends instead.
+    const page = new DOMParser().parseFromString(html, 'text/html');
+    document.replaceChild(document.adoptNode(page.documentElement), document.documentElement);
+    const hash = location.hash;
+    if (hash) requestAnimationFrame(() => {
+      const el = document.getElementById(decodeURIComponent(hash.slice(1)));
+      if (el) el.scrollIntoView();
+    });
+  }
+
+  const show = () => document.documentElement.className = '';
+  const form = document.getElementById('gate');
+  const input = document.getElementById('pw');
+  const button = document.getElementById('go');
+  const err = document.getElementById('err');
+
+  const saved = store.get();
+  if (saved) {
+    reveal(b64(saved)).catch(() => { store.drop(); show(); });
+  } else {
+    show();
+  }
+
+  form.addEventListener('submit', async e => {
+    e.preventDefault();
+    err.textContent = '';
+    input.removeAttribute('aria-invalid');
+    button.disabled = true;
+    button.textContent = 'Wird geöffnet …';
+    try {
+      const raw = await derive(input.value);
+      await reveal(raw, () => store.set(toB64(raw)));
+    } catch {
+      button.disabled = false;
+      button.textContent = 'Öffnen';
+      input.setAttribute('aria-invalid', 'true');
+      err.textContent = 'Das Passwort stimmt nicht.';
+      input.select();
+    }
+  });
+})();
+</script>
 </body>
 </html>

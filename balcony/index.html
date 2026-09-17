@@ -2,38 +2,147 @@
 <html lang="de">
 <head>
 <meta charset="utf-8">
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<meta name="robots" content="noindex">
-<title>Balcony</title>
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="robots" content="noindex, nofollow">
+<meta name="theme-color" content="#F6F6F3" media="(prefers-color-scheme: light)">
+<meta name="theme-color" content="#0C0D10" media="(prefers-color-scheme: dark)">
+<title>Jassm</title>
 <link rel="icon" href="/assets/mark.svg" type="image/svg+xml">
-<link rel="stylesheet" href="/assets/site.css">
+<link rel="apple-touch-icon" href="/assets/apple-touch-icon.png">
+<style>
+  :root {
+    --bg: #F6F6F3; --surface: #FFFFFF; --ink: #0E0F12;
+    --ink-2: rgb(14 15 18 / 0.62); --line: rgb(14 15 18 / 0.14);
+    --accent: #3B45D9; --error: #C4321F;
+    color-scheme: light;
+  }
+  @media (prefers-color-scheme: dark) {
+    :root {
+      --bg: #0C0D10; --surface: #141519; --ink: #F2F2EF;
+      --ink-2: rgb(242 242 239 / 0.64); --line: rgb(242 242 239 / 0.16);
+      --accent: #7C85FF; --error: #FF7B6B;
+      color-scheme: dark;
+    }
+  }
+  * { box-sizing: border-box; }
+  html, body { margin: 0; min-height: 100%; }
+  body {
+    min-height: 100vh; min-height: 100dvh;
+    display: grid; place-items: center;
+    padding: max(24px, env(safe-area-inset-top)) max(20px, env(safe-area-inset-right))
+             max(24px, env(safe-area-inset-bottom)) max(20px, env(safe-area-inset-left));
+    background: var(--bg); color: var(--ink);
+    font: 17px/1.5 -apple-system, BlinkMacSystemFont, "SF Pro Text", "Segoe UI", system-ui, sans-serif;
+    -webkit-font-smoothing: antialiased;
+  }
+  /* Nothing shows until the script has decided whether a saved key opens the page. */
+  html.checking main { visibility: hidden; }
+  main { width: 100%; max-width: 360px; }
+  .mark { width: 36px; height: 36px; display: block; margin-bottom: 28px; }
+  h1 { font-size: 28px; line-height: 1.15; letter-spacing: -0.03em; font-weight: 600; margin: 0 0 8px; }
+  p { margin: 0 0 28px; color: var(--ink-2); }
+  label { display: block; font-size: 14px; color: var(--ink-2); margin-bottom: 8px; }
+  input {
+    width: 100%; height: 52px; padding: 0 16px;
+    font: inherit; font-size: 17px; color: var(--ink);
+    background: var(--surface); border: 1px solid var(--line); border-radius: 14px;
+    outline: none; -webkit-appearance: none; appearance: none;
+  }
+  input:focus { border-color: var(--accent); box-shadow: 0 0 0 3px color-mix(in srgb, var(--accent) 22%, transparent); }
+  input[aria-invalid="true"] { border-color: var(--error); }
+  button {
+    width: 100%; height: 52px; margin-top: 12px;
+    font: inherit; font-size: 16px; font-weight: 500;
+    color: var(--bg); background: var(--ink);
+    border: 0; border-radius: 999px; cursor: pointer;
+    -webkit-tap-highlight-color: transparent;
+  }
+  button:active { transform: scale(0.98); }
+  button[disabled] { opacity: 0.55; cursor: default; transform: none; }
+  .error { min-height: 22px; margin: 10px 0 0; font-size: 14px; color: var(--error); }
+</style>
 </head>
 <body>
-<header class="site"><div class="wrap">
-  <a class="brand" href="/"><img src="/assets/mark.svg" alt="">Jassm</a><span class="sep">/</span><a class="sub" href="/balcony/">Balcony</a>
-</div></header>
+<script>document.documentElement.className = 'checking';</script>
+<main>
+  <img class="mark" src="/assets/mark.svg" alt="">
+  <h1>Noch nicht öffentlich</h1>
+  <p>Diese Seite ist in Vorbereitung und nur mit Passwort zugänglich.</p>
+  <form id="gate" autocomplete="on">
+    <input type="text" name="username" value="jassm.de" autocomplete="username" hidden>
+    <label for="pw">Passwort</label>
+    <input id="pw" name="password" type="password" autocomplete="current-password" required>
+    <button id="go" type="submit">Öffnen</button>
+    <p class="error" id="err" role="alert"></p>
+  </form>
+  <noscript><p>Zum Öffnen wird JavaScript benötigt.</p></noscript>
+</main>
+<script>
+(() => {
+  const P = {"i":600000,"s":"n6RIMfYiQThY\/vg3aWUhsA==","c":"HaUo30+MZBOYrXBp4RWtPeBsttGdbXlXHeteDhwAn2EHUvpM01+oIntFOj1vnvD3WF+p9wj5mO4g\/5jIiGSzasKzT\/fo\/Jw48em\/QpZC9+3cuUK8zo6FDLlh3SJ8+4CXYGJWOzxgYD1VYl8dhuXOIluni7GOlvTmznqrERfvw\/\/Sow0cVrppVKhEZtBSDPcjIc30dDTX9BsE2jKX8wAZV4xYUbRQqqhzsI\/boZYeSNKXJHnTYpVpxYDD3qvNAH24Re2nUMozxnWD6wZBH07LrNscDcCc8kQNQtKj\/bm1WPqjMpu1OHfOJZj9usxo7xi\/MBgCvJUO2my8GjJEsfgppBuimQSZlnl+SBCPviLKpvFAfryGTACD558G4S9bn2boJLNF1zJIBCsyoonyUUJHqR6ag1hh4\/jxE510lqpBpx+mHjLxXc92QwzMU\/Nxgo5foHCc1\/s0PIxQNqiGvmAtbdV2\/ECSF230BtovmJ1uTabbjPoCj+N9eIDTjNt\/7PZ2y43WXFZ7kb7EVFaS3\/hJE+VpuNvEOIsNRjJ57LvOU3OoyOnnz5MqwdVtdeZBe40fHjxeH3mh\/gOyP82XxofVqlTEmoyPIdaGGucxooaEmVRPO8YhWDWwugU56Oq84GSx9upTgidqpy0FAkWrHAeHs+GcR+Fusk4vG+zE+Jb4Do4kjoLNlqDadEelg77jvSG2PhH6LUB+17SIXX9uVDJCdX4W6kd4JrFLfA0WNZZvUDHuoaq4\/+4YiaIlE00iNQFuKu3ltgkoIIO5vo+Ig1SgtaLjg7G56RQHEn+7Xrxc1NaTi79guCfG9QNCy\/1++cYP2SKyeU6P9t6oH9u+3U5a\/oHqjUwPwY2WEVDa6SgdzmZhFfrqgrYpVnZeHsWO1y3L1yCSW6FljMMkIlYkCln2\/Uvl6AwYpwEh0Zap931vWrR3xVb1rTGXOT91HvjX9WVkFAnmwNP6cjx+z6S\/mtACHQyWz6Gy7LABtQh1YzIS92HLG5blfs4v4r9BFzkH2hlaSEGa+QomMJcSDk4hkqTwH9NhVijdUosXrPKAivkbKREru\/V8zTNSDkamm8Hga1fOA3KgSMA1nO98vk+zlVEoIxQHcZrgHlxGKmSGowkB\/WF2JbEgcrvHEA\/hbCoEd3WxUd6phSv5waXzyH6MItDCLc3JbfyoIqL2vohEXiS024bAudD1DaEUbSjZzHso0RdpwennGB2naagKWQp7OkdnG5RvkVObOYfuI9s+0j7DNoPnHfmlPGx0Qum4ERWhca9Amy+2hhsJqZ9Sf68lNtdI3gA2FkTyJbmNQY4Blmokf5NvrQVFcbv5xohlba8yeKu9LQZsErHU4HD3HSxVyj3cRvvWGvVcka+wNXqqm7U5rfrtjaDXi4M8cvuHWDHqpYYC+gLun488FN2woUEZygSDpqWxOCNUoSRGcauZ+Oz72I0tjMzeuRQN444n8NTyshfn5IkkqYkFDdJnuZMM4u600DBgaTZhnia+GCaa7kiyFDThs80T+0Kes1v2EwxFPiJa3yY281ALWyYObsdSH7KpqHMnCv8sCuZEktckmylgx77cQ0t4X5SvoMj6eSUwI9qqlgA2Jv4soipbQt8hlvyrv4WX6t7soiTEJG1v45laKmpcH\/61TVOFJCVMPSKov3FF\/biNTCdqld\/ztmzpx+YYGvJh9CvkB3B68RCuTR9LTi7GlPmea1LBQ5O8MyqnzpYui1w07x1owJi6lX55l8S1ht\/woa6u\/Gwv4UTvhUP3sDao8HizpL5wPorSydPIjDDZGSXY95XNBlOIglARN4J9alk6aVVt\/Nf2o2lMqCe45rwhgvdQZKm2pBuu+qd4vQ6bvuAwjE68\/vui1DxN42RmwZ1BPOF86mc6XQjyIqgm5HXXSNiQaEhyqEZQ2qDYXEvG6wnbIr9YU1MT80E6VqrQ2rC2cm3R6kBHlHeQU3J87Aw737HRUseLudCtlqVinWDfIvTfTCBnrGJTfKs36oit6LAxXnlBBCiE8TAes4r58tmHxRILVnHsz4AzB5yx1Og8DBT0L\/Z5qTrx9pDbVWGvMrklahMB8f+x02Bqnok387uWN7nRNxf8sqXk+4w46+sm1PCWoz4CiXbd\/qKy5sJofQbbdROrhqq4DZdvVPR8DnlY6\/NBEVUJAyd6v7dXUjIIL9u9bfh8OFywMtdBgexoDmS\/DUhNucBbLkLr2UaIEZ0Wwu89J\/\/w0FwbFhaaBOjb3UKFornX+A5ei5IKk9Oty437RNJMvNy1m7UzJCqtbJGDKTYfesf\/1gfF9rguH\/OQd1i\/fOYhWs4GEd7O0OmYxvlss6WHh463nHCjcTGRQziAeQzY\/8U6OLvdh48oPaDtBexQerFoDuPzsRAjBjyiuewXvDSektOMGK7f2SHJyGNlkUIUx1KKlcjnFMi1PoiDIQYewh4NDUCHbtV63opm4yqowP+qN0veQHnXyq00J3iUJymSCS6JbeyySxDzA5iPRwVae7nxrJK1kEtsjdLD7lcxa9xvrFOOtgMcwllZYYoP+ULunGiORJmFlZrxj2B9NYQO+vBfcqEdqLY9B1ilmA6e2Sg2vxKK41hQBwTIq4brUPtSJQkpTUszcq3jTdaQAbkiHc32YapjR49xlD+0SsR0PVlYcTUFiTEZOO7S6udNjNOTf8SwsHC2uPivrCBiadpCee0gMHVM5McTJqKq5qEC6DrKXXQB+vWKcS\/+tdGDr8yBAP8asFHtPBJoyjxh17ypNsnH45Da+oW\/lJZOGz1ekuzXwE2Tvqt\/KbpbBMztMeYkuslWiXZNCIQl+YKCFiKprl1Sd4AofmgTlBbpK1nEH6uTYIxSJ1veTDaQGeU+gNFf5c1M4vhJA7I9MemQkxV3IVFRkbhRSndBtlxoNFYXJ7QkhDQQ5jhTwz+36ZzhHy0SZdHWgjRERRKM2aPP6JNwCWAIdmGrWUQ7nkkL8xiPEJdp6y3GxdHJ986ZJ2XAJScRqPDOuUXiBoY1IKEgCd+RR4BmwhRbSrPjfzWGcRD\/nVYFBimQ4+y3Rkun+5POghiDq3m04jHoS64LRPieLujcXfpp2zPQYJQNzGyb6hTNIt2bEyW27cn17hRDm8dawJvhtljMy2mawGKn8Z\/NGBJEAcMva4L4Q92XpXkZRaN5aICBiUIg82DvecOIn3lWTmr4i721Zu2cNkzBzss=","v":"yBhcD9Io8MuRnDif"};
+  const KEY = 'jassm.gate.' + P.s;
+  const b64 = s => Uint8Array.from(atob(s), c => c.charCodeAt(0));
+  const toB64 = u => btoa(String.fromCharCode(...u));
+  const store = {
+    get() { try { return sessionStorage.getItem(KEY); } catch { return null; } },
+    set(v) { try { sessionStorage.setItem(KEY, v); } catch {} },
+    drop() { try { sessionStorage.removeItem(KEY); } catch {} }
+  };
 
-<main><div class="wrap prose">
-  <h1>Balcony</h1>
-  <p class="lede">Das Spiele-Label von Jassm. Klassische Spiele, sorgfältig neu
-  gebaut für iPhone.</p>
+  async function derive(password) {
+    const base = await crypto.subtle.importKey('raw', new TextEncoder().encode(password), 'PBKDF2', false, ['deriveBits']);
+    const bits = await crypto.subtle.deriveBits(
+      { name: 'PBKDF2', salt: b64(P.s), iterations: P.i, hash: 'SHA-256' }, base, 256);
+    return new Uint8Array(bits);
+  }
 
-  <div class="panel">
-    <a class="row" href="/balcony/minesweeper/">
-      <img src="/assets/minesweeper.png" alt="">
-      <div>
-        <strong>Minesweeper</strong>
-        <span class="meta">Der Klassiker, neu gebaut.</span>
-      </div>
-      <span class="pill">In Entwicklung</span>
-    </a>
-  </div>
-</div></main>
+  async function reveal(raw, opened) {
+    const key = await crypto.subtle.importKey('raw', raw, 'AES-GCM', false, ['decrypt']);
+    const plain = await crypto.subtle.decrypt({ name: 'AES-GCM', iv: b64(P.v) }, key, b64(P.c));
+    const html = new TextDecoder().decode(plain);
+    if (opened) opened();
+    // Swap the whole document for the decrypted one. Not document.write:
+    // called while this page is still loading, that appends instead.
+    const page = new DOMParser().parseFromString(html, 'text/html');
+    document.replaceChild(document.adoptNode(page.documentElement), document.documentElement);
+    const hash = location.hash;
+    if (hash) requestAnimationFrame(() => {
+      const el = document.getElementById(decodeURIComponent(hash.slice(1)));
+      if (el) el.scrollIntoView();
+    });
+  }
 
-<footer class="site"><div class="wrap">
-  <span class="copy"><img src="/assets/mark.svg" alt="">© 2026 Jassm</span>
-  <a href="/impressum/">Impressum</a>
-  <a href="/datenschutz/">Datenschutz</a>
-</div></footer>
+  const show = () => document.documentElement.className = '';
+  const form = document.getElementById('gate');
+  const input = document.getElementById('pw');
+  const button = document.getElementById('go');
+  const err = document.getElementById('err');
+
+  const saved = store.get();
+  if (saved) {
+    reveal(b64(saved)).catch(() => { store.drop(); show(); });
+  } else {
+    show();
+  }
+
+  form.addEventListener('submit', async e => {
+    e.preventDefault();
+    err.textContent = '';
+    input.removeAttribute('aria-invalid');
+    button.disabled = true;
+    button.textContent = 'Wird geöffnet …';
+    try {
+      const raw = await derive(input.value);
+      await reveal(raw, () => store.set(toB64(raw)));
+    } catch {
+      button.disabled = false;
+      button.textContent = 'Öffnen';
+      input.setAttribute('aria-invalid', 'true');
+      err.textContent = 'Das Passwort stimmt nicht.';
+      input.select();
+    }
+  });
+})();
+</script>
 </body>
 </html>

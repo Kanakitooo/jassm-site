@@ -2,73 +2,147 @@
 <html lang="de">
 <head>
 <meta charset="utf-8">
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<meta name="robots" content="noindex">
-<title>Datenschutz · Jassm</title>
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="robots" content="noindex, nofollow">
+<meta name="theme-color" content="#F6F6F3" media="(prefers-color-scheme: light)">
+<meta name="theme-color" content="#0C0D10" media="(prefers-color-scheme: dark)">
+<title>Jassm</title>
 <link rel="icon" href="/assets/mark.svg" type="image/svg+xml">
-<link rel="stylesheet" href="/assets/site.css">
+<link rel="apple-touch-icon" href="/assets/apple-touch-icon.png">
+<style>
+  :root {
+    --bg: #F6F6F3; --surface: #FFFFFF; --ink: #0E0F12;
+    --ink-2: rgb(14 15 18 / 0.62); --line: rgb(14 15 18 / 0.14);
+    --accent: #3B45D9; --error: #C4321F;
+    color-scheme: light;
+  }
+  @media (prefers-color-scheme: dark) {
+    :root {
+      --bg: #0C0D10; --surface: #141519; --ink: #F2F2EF;
+      --ink-2: rgb(242 242 239 / 0.64); --line: rgb(242 242 239 / 0.16);
+      --accent: #7C85FF; --error: #FF7B6B;
+      color-scheme: dark;
+    }
+  }
+  * { box-sizing: border-box; }
+  html, body { margin: 0; min-height: 100%; }
+  body {
+    min-height: 100vh; min-height: 100dvh;
+    display: grid; place-items: center;
+    padding: max(24px, env(safe-area-inset-top)) max(20px, env(safe-area-inset-right))
+             max(24px, env(safe-area-inset-bottom)) max(20px, env(safe-area-inset-left));
+    background: var(--bg); color: var(--ink);
+    font: 17px/1.5 -apple-system, BlinkMacSystemFont, "SF Pro Text", "Segoe UI", system-ui, sans-serif;
+    -webkit-font-smoothing: antialiased;
+  }
+  /* Nothing shows until the script has decided whether a saved key opens the page. */
+  html.checking main { visibility: hidden; }
+  main { width: 100%; max-width: 360px; }
+  .mark { width: 36px; height: 36px; display: block; margin-bottom: 28px; }
+  h1 { font-size: 28px; line-height: 1.15; letter-spacing: -0.03em; font-weight: 600; margin: 0 0 8px; }
+  p { margin: 0 0 28px; color: var(--ink-2); }
+  label { display: block; font-size: 14px; color: var(--ink-2); margin-bottom: 8px; }
+  input {
+    width: 100%; height: 52px; padding: 0 16px;
+    font: inherit; font-size: 17px; color: var(--ink);
+    background: var(--surface); border: 1px solid var(--line); border-radius: 14px;
+    outline: none; -webkit-appearance: none; appearance: none;
+  }
+  input:focus { border-color: var(--accent); box-shadow: 0 0 0 3px color-mix(in srgb, var(--accent) 22%, transparent); }
+  input[aria-invalid="true"] { border-color: var(--error); }
+  button {
+    width: 100%; height: 52px; margin-top: 12px;
+    font: inherit; font-size: 16px; font-weight: 500;
+    color: var(--bg); background: var(--ink);
+    border: 0; border-radius: 999px; cursor: pointer;
+    -webkit-tap-highlight-color: transparent;
+  }
+  button:active { transform: scale(0.98); }
+  button[disabled] { opacity: 0.55; cursor: default; transform: none; }
+  .error { min-height: 22px; margin: 10px 0 0; font-size: 14px; color: var(--error); }
+</style>
 </head>
 <body>
-<header class="site"><div class="wrap">
-  <a class="brand" href="/"><img src="/assets/mark.svg" alt="">Jassm</a>
-</div></header>
+<script>document.documentElement.className = 'checking';</script>
+<main>
+  <img class="mark" src="/assets/mark.svg" alt="">
+  <h1>Noch nicht öffentlich</h1>
+  <p>Diese Seite ist in Vorbereitung und nur mit Passwort zugänglich.</p>
+  <form id="gate" autocomplete="on">
+    <input type="text" name="username" value="jassm.de" autocomplete="username" hidden>
+    <label for="pw">Passwort</label>
+    <input id="pw" name="password" type="password" autocomplete="current-password" required>
+    <button id="go" type="submit">Öffnen</button>
+    <p class="error" id="err" role="alert"></p>
+  </form>
+  <noscript><p>Zum Öffnen wird JavaScript benötigt.</p></noscript>
+</main>
+<script>
+(() => {
+  const P = {"i":600000,"s":"n6RIMfYiQThY\/vg3aWUhsA==","c":"iax2WgWY2l0mYGQXnme9enoRsqwiWA2n9XPvItqOkCMb+Xq8yh86GK\/6DHH287LuvFnI5WCvf0zZ9iiTLfYQvSqaE2RHNaW+9y+vBEI15AOIUMQwcXgWLwyKy4NlDH4qh09D0768FH7GhUBzzkIG9qXqs+fow\/B+8Vqz+gSX7uVlvvwFkiYUuOzbU4LX6UE\/ifsWTSyDMjkbei6V\/6h8EoldRt1XzC4mbmWckqBmmCctC9+cZaJ\/s5AOxtflA6Axcb1aCz55Vq+tFOxFdcw4imX7Xg27mpu8hUnlMolTunLZ\/WvAta3uMMAjQqNJMgc8vYtPaI1AzO2YUuurehQPFFUkCK2SC2TGbH4E3mP4IS+kTsoaXzSp4VAYWECMkB4I4uT8xYOAkg8VFXBs8LcoLr71xH6RG6amjz1AN7H85Yq0ykujE90Ts4vD3uI\/\/IBxaoWt0xH5MD3nCi\/ht331QPgxTj5yKfVeB4SQi45nTaxS2USDrSDgoZLwfzVTdPQEwDMFM218OVxKNv1uiL99\/5eU\/nKdT37R+vtGxOVuX058o31iuSZMldP\/BOImuaEubRnirJvJLBJNU2isaRB6y50slG8zc0F+Sx7frX6R7vXlFJNW57CyYB7RNNm+\/\/4aNDKnPBhUWDm37DidpEdaDqmj\/3cF\/UYGavUWgOG6uxCvbrGWU1CWnvVnd9qVsH9yI7LE9zo5a3Rxt9Einva4ss7YrXB9GmEHyw0jq9HKKjght8V1Wolls+gIEVy6IIXCWUXqCOpzKoEgrdz6ekueb6oGN+4Zo81rx7GmFprp4csATLjNuUXXUZ6rJt0R8MXBJml\/NPTyiPF0FruapLSxedtxk5w5fTxUvlMcanQtSMxksVgOgaO1hhA7uCE+n4eALYTxTeregMqYDKCuazPSgNh6+h40bq1EkZY+xjjk\/uxiVhWP5PF\/MlSFYt7xcOgP6C+ht1Njp72B7n8jRKkt0ekGfU2Iw7sFlYLCi5h1sQ8Zas4SsyuiSBeu8y8zIC\/r8Q4lUtUIMl7Tbq3Pe3re65hw68ayzUzLKqQ2jWKCrd8TCpA6RZVZvCmnX8kfjjqEuGkaZo9exhpZZVZPE4B6Ml+Iwc\/KCOxIDmSMlQaanJAEwP7QfPFTMiaAffXWT3kc\/dYgXt+2CvpvIAUQ417GW4ncnwPloPvlEYqyDk+XjWvTgYGwCWgkrP01JRaxeXL\/Lphl+E+UJ7DLyb9ye8bNi\/IqW2SSiRvZpciSIa1SO87sGE5xIpl3t\/H29FEbaV1vgQ+Ub8qmMgUPnm6upIo51Fr2XQpTVxUnnh17pXxMe7aVKcIoGp80vHhfqjtC7iqqSC9XcGih16z5xct9oh5fKKuWqTSljLQsU16wjrt8Kgc\/tIpBxg\/mAo+kaK4O2L+2w+o7sKz8wxcnm0nNf47m8\/t\/PnXP+1D1PRZAT1CYmSVkuYfftjDtkOCF1JGSOuxWXAkSA7vdSBJ2hZ9LW2RKAnKWOj8nJNTD5EzXzNM05NzacincQRshefUOhMWbTBpLUm0SIxjr\/d7ZYVNRyT5qxGIDPgxFwe4xg61vxOqekEqlbahHwg99KOV4ZAaI4UJK9Bugx\/19G1mLzsA01ZfRozY1PzpBgQhdZjDmiZVinJBJ+wSIemWtI5auNthgOQcVj+f7HXbDCqqhjdJ3XwTD5IztNctU\/l+DB\/BxbcWxbGwzwvmkKGxCBorwh49Dw3xX2zrOlmbCZ00\/44lpkUzrJ1CDarZ31VTcSfs4JwXoLEIz7XtDZUfnyPBgnllf\/5qtNd83xseodtoMftgbEmtgfqIXRLuzLZ3vJ9M07DTTyRUxPD1fmxYIzLN1pnL5cpipvgAVFZx2YRNfi9I4Y9Q+8dBkvWVHxp\/fTmgEZ7lVqedBdczJ1RLLIZ+5yAQmj98I6D6utNJyWoN+MC4H6jYhUL2407C7cD3oWV4bsN3Mcfxfio1EI0U\/jYDQWgkIq4VfnD0glfdV7WYSfehaZq7OnEcoyy6Q0KT66atAPc9ZH7jGdK+iZB8HPt5ekItKIu+5ksYyTZUDsPxF0218kjKUkTnVxCFIwDI8FW5jKNXc+e0KUQRMbJ04d7O3J1oGwYgFfFlT+3qh4fao0+6gfxUIx\/HI3XnDgQCbBzyB0pd7d5XeuwGnrnFzSwA6cn2H1piRzBmRbTBAbrcOtj\/xwt1R2q6eZySz8fAXaAm+MOhi1G9DoECAG2k4+dKsXsZACawl\/O9X5BvrzMBjCycDuWMxHTEyL4mEGBwt+zMN271JB4CVnCvAI4LuZKQoTOxlKYRVi9fL1yRTpU6YTvtrcpXD6SteDSUsHHla8QvksdqrXpDHGL\/99j6PZHAR5ApREH232pMYoIVcjIF+rUiszq0FuL4ZVAL+knEjwM2aXO3j2eDDjfDSvOUdm645RElJwHIBXQnFoHtFAqHGwRGQ0rAjv799c4Udej7ixitLyXWhrCceDYypqTg5m89TPcROcDi6Sr8qXPhr9lSlWvNhI+yrZuDgv5bhuvuO4pSoE2skfoHlOdY4A6F3pX8CGDmOzd32RqsQvnmuWk2QTBwBtixptpjV3ZnGHzxvHjccwgcp5H6Br365ZAm31ShMB1PutU\/7LCO6XZkhraoyyAwcxijCSHx+0x1NfJW47TUSsGntKamsJGLmFHaNxomlw1C\/uCVMuGDyi3kvxmcdVZaqBJ1vYxygvug+mkx+m\/8q2+Hw5g3tNiZXCAVo0L+kyxK2VwbiNz1IJJYxgtPqLEU6YQExqFiUUazgM0GDmgfiIAnDglRhaPXR2A5m\/xwo0OTodI7RGoIcLq+b3SKYQk97nrH3UTTAE\/JIgBDyx78bvL68iznR1LPD7DeN\/RxPGjvycWlMEZ9P\/VvUwTSnEvE+yF7CE57ESPZLCfFxZz3FA8DNqNUjlnslivNm\/xxZnzPoLbEy2+B1UnvFwJQw4MlhoVuPpAcCWYQ2Xa2wferPEpHy+3vf5O53P7zu9j5LKZQzIQUaMzbLHTcLL2rgQJzXYvcmOn8+ClVH7ZN1x9J0PbbR84y9gmvpbi0T3aJSgMshj3yMUd+GjtTeELA2LxecLhLXQIVdYfcapn2EjzQ8n87O88svp0tSPmEZy1M4hHt4WsG9E9Dvn5MxjIBbxlCJtO22l3Q8pABDBO6MwLTy8K2lcR\/wd13q2SkIRIx6Os6vFAs3kOE+WjTiW3nVbm\/kNJ4y8Wjx7eiLzjOePnjdAxjfZtespcGWGIzoC9NTVnTsIshp9MJw98wetnL+qUf6jQbPUEu730sFaFQSrIcOo32akiVnKtsK2OgJqrdu5yIVRImBgta0apEro\/inMFX8xVIPE7RLnWpoxz0KtqOlhgAsfXfUuFpuKYwyQWl8hikGWuTga3iW8yHfsX+OyJOduh5qyTpGbB6OKmdBFN2hiG4TxZIfURqMhFIi58Po14mhijX3bLg8beR5trb5dD2hjBQfXdn0Vxta8oIpGPIAkwupodD0GwwxCaRPanFMtJ7eXIgZqTmCHQpJ9q2+1Y7Ch9TH5Tp\/JZH5M9mCIfBmXJQ6n5rNRpR88A2EmeMxJfEKRAMPR4LV4oj\/wUwX4uT0mjhe+XB\/KIIGZ+aVBoMA9yn9H4\/JqP1tyIzeuOKZqfHxrO4n05G2ZcrwLZ2ivhj39MRKxYX\/xNVU0d23JKvZLovIFQ1SoFqhyZNudot\/73KlFsGVvyuic+3V7EMHWDSNignswHP\/yONskzgI3Jb2V57ySpD9o2P0puo\/qgu9KqBMSX1mrRSH0+c0cw2gTWy2WPq2FQPRO232xBppkqQTonY2OzQMi6rJIE\/gKNi4CXjhi3IwYG1IK8NMQslsFxL+c0BI0eBXTSNn+qC1pces\/dqqzvbgBNc9R0Th9v3yANSxIjPjpg5vrkn\/VfkUSa4ZPIndJ+3wu5t0vlBFyHAwq\/64JGMXOLcSkLRyHN7n\/fPAHAYpZHP0O5hqw0sL6\/q9KfEbGLWviXI3BmgR6d6DocJNsHFt\/VM37BXfoIbKDb\/hwC8ccOgeZARbZtDstPqRP2diL6MZbxQv7F0KOeDdsWKY1Mdz8va0A7TLLAOidodtzs1pKLwhI4+vNrj2\/hJuHpg5I\/A3pEeCxBeWRT0AqUZdE1zcAbxHCUUZvXeCL1x99S3gvxOv\/5A74zY4VgAxt1y1AuF9x4Y38yi48K7Zsu4WzqYuBi094nAKYqZ9Gu+lJddnsipQHAtkfO90koiDIoFwuYel8yrFD3IUj+LMjIHNLux+gQPPNEcIzPQvzgRUcohCtvnQpHCrxuRcjiS2yDSpS66lymQ\/wPXPuDS+Iot\/MjOZ7HpCD9jPXWWNnht3dJSiAsv\/BYijIBy27PuR5C1BhWXNGTlrEgP1avkYvZ5nd8rlSLWGqMUg8vRtRyavDVg8Pq9XP2\/gVGmZj6Frpipi7v5nRY2Ffa7V336sTIuLtIRW+IW\/sdZb52m7B\/o6sIn2CpS1CMOVcfXGrwYqE7aza\/U8RXfjRJ7uhsn9dutzZdKvpWw8aqgxuqc1cYvL3jPRT24W0RhrIS1dP2KGaTfr9KSy1vCECjqPaDkPMKO43ovO2OHPnZSAmp6dbkSsBRC4SmHeJ2Mdz4kXW\/4kpXKwSmQsLfYw0wU+\/nKoxIc8aVQ93tIeQ+MJnu\/2Gud8fiRYf1cGQfuTXpEFwb4Ea0NTfHUMCxLN4yPkzwCoZz2IHDhC2RCLFEtfrPugC65R+eswL+MnJdosIb587QD8uC+TiIc3bKZun6Xhvg4U0b6PiUorynuv+lnd1LMY5PDXRDDlx\/E865mvQZse0t107J1blnBZUhg4TZjchrkyTc5REj55DA==","v":"jwA2ADFbgHNrVSqO"};
+  const KEY = 'jassm.gate.' + P.s;
+  const b64 = s => Uint8Array.from(atob(s), c => c.charCodeAt(0));
+  const toB64 = u => btoa(String.fromCharCode(...u));
+  const store = {
+    get() { try { return sessionStorage.getItem(KEY); } catch { return null; } },
+    set(v) { try { sessionStorage.setItem(KEY, v); } catch {} },
+    drop() { try { sessionStorage.removeItem(KEY); } catch {} }
+  };
 
-<main><div class="wrap prose">
-  <h1>Datenschutzerklärung</h1>
-  <p class="lede">für die Website jassm.de</p>
+  async function derive(password) {
+    const base = await crypto.subtle.importKey('raw', new TextEncoder().encode(password), 'PBKDF2', false, ['deriveBits']);
+    const bits = await crypto.subtle.deriveBits(
+      { name: 'PBKDF2', salt: b64(P.s), iterations: P.i, hash: 'SHA-256' }, base, 256);
+    return new Uint8Array(bits);
+  }
 
-  <p>Diese Erklärung gilt für diese Website. Für unsere Apps gibt es jeweils
-  eine eigene Datenschutzerklärung, die auf der Seite der App verlinkt ist,
-  zum Beispiel für <a href="/balcony/minesweeper/datenschutz/">Minesweeper</a>.</p>
+  async function reveal(raw, opened) {
+    const key = await crypto.subtle.importKey('raw', raw, 'AES-GCM', false, ['decrypt']);
+    const plain = await crypto.subtle.decrypt({ name: 'AES-GCM', iv: b64(P.v) }, key, b64(P.c));
+    const html = new TextDecoder().decode(plain);
+    if (opened) opened();
+    // Swap the whole document for the decrypted one. Not document.write:
+    // called while this page is still loading, that appends instead.
+    const page = new DOMParser().parseFromString(html, 'text/html');
+    document.replaceChild(document.adoptNode(page.documentElement), document.documentElement);
+    const hash = location.hash;
+    if (hash) requestAnimationFrame(() => {
+      const el = document.getElementById(decodeURIComponent(hash.slice(1)));
+      if (el) el.scrollIntoView();
+    });
+  }
 
-  <h2>1. Verantwortlicher</h2>
-  <p>Verantwortlich für die Datenverarbeitung auf dieser Website ist der im
-  <a href="/impressum/">Impressum</a> genannte Anbieter.</p>
+  const show = () => document.documentElement.className = '';
+  const form = document.getElementById('gate');
+  const input = document.getElementById('pw');
+  const button = document.getElementById('go');
+  const err = document.getElementById('err');
 
-  <h2>2. Das Wichtigste vorweg</h2>
-  <ul>
-    <li>Diese Website setzt keine Cookies.</li>
-    <li>Sie verwendet keine Analyse- oder Tracking-Dienste.</li>
-    <li>Sie lädt keine Inhalte von anderen Servern, auch keine Schriftarten.</li>
-    <li>Es gibt keine Formulare und kein Benutzerkonto.</li>
-  </ul>
+  const saved = store.get();
+  if (saved) {
+    reveal(b64(saved)).catch(() => { store.drop(); show(); });
+  } else {
+    show();
+  }
 
-  <h2>3. Hosting</h2>
-  <p>Diese Website wird bei GitHub Pages gehostet, einem Dienst der GitHub, Inc.,
-  88 Colin P. Kelly Jr. Street, San Francisco, CA 94107, USA. Wenn Sie die Website aufrufen, verarbeitet GitHub
-  technisch notwendige Daten, insbesondere Ihre IP-Adresse, Datum und Uhrzeit
-  des Abrufs, die aufgerufene Adresse sowie Angaben zu Browser und
-  Betriebssystem. Das ist nötig, um die Seite auszuliefern und den Dienst
-  gegen Missbrauch zu schützen.</p>
-  <p>Rechtsgrundlage ist unser berechtigtes Interesse an einer sicheren und
-  zuverlässigen Bereitstellung der Website (Art. 6 Abs. 1 lit. f DSGVO).
-  Dabei werden Daten in die USA übermittelt. GitHub, Inc. ist nach dem
-  EU-US Data Privacy Framework zertifiziert (Art. 45 DSGVO). Näheres steht in
-  der <a href="https://docs.github.com/de/site-policy/privacy-policies/github-general-privacy-statement">Datenschutzerklärung von GitHub</a>.</p>
-
-  <h2>4. Kontakt per E-Mail</h2>
-  <p>Wenn Sie uns eine E-Mail schreiben, verarbeiten wir Ihre Adresse und den
-  Inhalt Ihrer Nachricht, um Ihre Anfrage zu beantworten (Art. 6 Abs. 1
-  lit. b bzw. lit. f DSGVO). Wir löschen die Nachricht, sobald sie erledigt
-  ist und keine gesetzlichen Aufbewahrungspflichten entgegenstehen.</p>
-
-  <h2>5. Ihre Rechte</h2>
-  <p>Sie haben das Recht auf Auskunft (Art. 15 DSGVO), Berichtigung
-  (Art. 16), Löschung (Art. 17), Einschränkung der Verarbeitung (Art. 18),
-  Datenübertragbarkeit (Art. 20) und Widerspruch gegen Verarbeitungen, die
-  auf einem berechtigten Interesse beruhen (Art. 21). Wenden Sie sich dafür
-  an die im Impressum genannte Adresse.</p>
-  <p>Sie haben außerdem das Recht, sich bei einer
-  Datenschutz-Aufsichtsbehörde zu beschweren (Art. 77 DSGVO), etwa bei der
-  Behörde Ihres Wohnorts.</p>
-
-  <p class="small">Stand: September 2026</p>
-</div></main>
-
-<footer class="site"><div class="wrap">
-  <span class="copy"><img src="/assets/mark.svg" alt="">© 2026 Jassm</span>
-  <a href="/impressum/">Impressum</a>
-  <a href="/datenschutz/">Datenschutz</a>
-</div></footer>
+  form.addEventListener('submit', async e => {
+    e.preventDefault();
+    err.textContent = '';
+    input.removeAttribute('aria-invalid');
+    button.disabled = true;
+    button.textContent = 'Wird geöffnet …';
+    try {
+      const raw = await derive(input.value);
+      await reveal(raw, () => store.set(toB64(raw)));
+    } catch {
+      button.disabled = false;
+      button.textContent = 'Öffnen';
+      input.setAttribute('aria-invalid', 'true');
+      err.textContent = 'Das Passwort stimmt nicht.';
+      input.select();
+    }
+  });
+})();
+</script>
 </body>
 </html>
